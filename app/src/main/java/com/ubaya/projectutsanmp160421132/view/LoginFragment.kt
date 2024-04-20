@@ -45,16 +45,7 @@ class LoginFragment : Fragment() {
             val username = binding.txtUsername.text.toString()
             val password = binding.txtPassw.text.toString()
 
-            val alert = AlertDialog.Builder(activity)
-            alert.setTitle("Konfirmasi")
-            alert.setMessage("Apakah anda ingin melakukan login dengan akun ini?")
-            alert.setPositiveButton("Login", DialogInterface.OnClickListener { dialog, which ->
-                login(username, password)
-            })
-            alert.setNegativeButton("Batal", DialogInterface.OnClickListener { dialog, which ->
-                dialog.dismiss()
-            })
-            alert.create().show()
+            login(username, password)
         }
 
         binding.btnRegister.setOnClickListener {

@@ -69,7 +69,7 @@ class RegisterFragment : Fragment() {
         Log.d("register", "registerVolley")
 
         queue = Volley.newRequestQueue(context)
-        val url = "http://10.0.2.2/project_uts_anmp/register.php"
+        val url = "http://10.0.2.2/anmp_utsproject/register.php"
 
         val alert = AlertDialog.Builder(activity)
         alert.setTitle("Informasi")
@@ -81,7 +81,7 @@ class RegisterFragment : Fragment() {
                 Log.d("cekbisa", it)
                 val obj = JSONObject(it)
                 if (obj.getString("result") == "OK") {
-                    alert.setMessage("Berhasil mendaftarkan user.\nSilahkan login menggunakan username dan password")
+                    alert.setMessage("Pendaftaran Berhasil.\nSilahkan Login")
                     alert.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
                         val action = RegisterFragmentDirections.actionLoginFragment()
                         Navigation.findNavController(view).navigate(action)
