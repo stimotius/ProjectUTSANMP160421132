@@ -87,7 +87,7 @@ class RegisterFragment : Fragment() {
                         Navigation.findNavController(view).navigate(action)
                     })
                 } else {
-                    alert.setMessage("Gagal mendaftarkan user.")
+                    alert.setMessage("Pendaftaran Gagal.")
                     alert.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
                     })
                     alert.create().show()
