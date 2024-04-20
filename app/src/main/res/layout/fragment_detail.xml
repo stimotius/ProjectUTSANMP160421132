@@ -79,7 +79,7 @@
                     android:id="@+id/btnPrev"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="132dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginBottom="32dp"
                     android:text="Prev"
                     app:icon="@drawable/baseline_navigate_before_24"
