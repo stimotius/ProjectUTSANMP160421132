@@ -78,7 +78,7 @@ class RegisterFragment : Fragment() {
             Request.Method.POST,
             url,
             {
-                Log.d("cekbisa", it)
+                Log.d("ceknoerror", it)
                 val obj = JSONObject(it)
                 if (obj.getString("result") == "OK") {
                     alert.setMessage("Pendaftaran Berhasil.\nSilahkan Login")

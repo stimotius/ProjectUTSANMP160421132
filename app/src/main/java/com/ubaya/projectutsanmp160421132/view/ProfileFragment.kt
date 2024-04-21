@@ -48,20 +48,20 @@ class ProfileFragment : Fragment() {
             val sType = object: TypeToken<Pengguna>() { }.type
             val user = Gson().fromJson(res.toString(), sType) as Pengguna
 
-            HomeActivity.load_picture(requireView(), "https://picsum.photos/300/200", binding.imageView3)
+            HomeActivity.load_picture(requireView(), "https://picsum.photos/300/300", binding.imageView3)
 
-            binding.txtProfilUsername.text = "Anda login sebagai: ${user.nama_depan} ${user.nama_belakang}"
+            binding.txtProfilUsername.text = "${user.nama_depan} ${user.nama_belakang}"
 
             val dialog = AlertDialog.Builder(activity)
             dialog.setTitle("Konfirmasi")
 
             binding.btnUpdate.setOnClickListener {
-                dialog.setMessage("Apakah anda yakin ingin mengganti data diri anda?")
+                dialog.setMessage("Apakah anda yakin ingin mengubah data Anda?")
                 dialog.setPositiveButton("Ganti", DialogInterface.OnClickListener { dialog, which ->
                     val new_nama_depan = binding.txtUbahNamaDepan.text.toString()
                     val new_nama_belakang = binding.txtUbahNamaBelakang.text.toString()
                     val new_pass = binding.txtUbahPassword.text.toString()
-                    updateData(user, new_nama_depan, new_nama_belakang, new_pass)
+                    ubahData(user, new_nama_depan, new_nama_belakang, new_pass)
                 })
                 dialog.setNegativeButton("Batal", DialogInterface.OnClickListener { dialog, which ->
                     dialog.dismiss()
@@ -70,22 +70,15 @@ class ProfileFragment : Fragment() {
             }
 
             binding.btnLogout.setOnClickListener {
-                dialog.setMessage("Apakah anda yakin ingin melakukan logout?")
-                dialog.setPositiveButton("Logout", DialogInterface.OnClickListener { dialog, which ->
-                    HomeActivity.logout(requireActivity())
-                    val intent = Intent(activity, MainActivity::class.java)
-                    startActivity(intent)
-                    activity?.finish()
-                })
-                dialog.setNegativeButton("Batal", DialogInterface.OnClickListener { dialog, which ->
-                    dialog.dismiss()
-                })
-                dialog.create().show()
+                HomeActivity.logout(requireActivity())
+                val intent = Intent(activity, MainActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
             }
         }
     }
 
-    fun updateData(user: Pengguna, nama_depan: String, nama_belakang: String, password: String) {
+    fun ubahData(user: Pengguna, nama_depan: String, nama_belakang: String, password: String) {
         var new_nama_depan: String?
         var new_nama_belakang: String?
         var new_pass: String?
@@ -111,7 +104,7 @@ class ProfileFragment : Fragment() {
         Log.d("update", "updateVolley")
 
         queue = Volley.newRequestQueue(context)
-        val url = "http://10.0.2.2/project_uts_anmp/update_data.php"
+        val url = "http://10.0.2.2/anmp_utsproject/ubah_data.php"
 
         val alert = AlertDialog.Builder(activity)
         alert.setTitle("Informasi")

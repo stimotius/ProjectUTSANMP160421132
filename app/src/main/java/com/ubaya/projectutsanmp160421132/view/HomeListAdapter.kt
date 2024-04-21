@@ -23,7 +23,7 @@ class HomeListAdapter(val fmList: ArrayList<VideoEditor>): RecyclerView.Adapter<
             HomeActivity.load_picture(holder.itemView, fmList[position].url_gambar.toString(), imgPhoto)
             txtNama.text = fmList[position].nama
             txtUsername.text = "By ${fmList[position].pembuat}"
-            txtContent.text = fmList[position].deskripsi
+            txtDescription.text = fmList[position].deskripsi
 
             btnRead.setOnClickListener {
                 val action = HomeFragmentDirections.actionDetailFragment(fmList[position].id.toString().toInt())

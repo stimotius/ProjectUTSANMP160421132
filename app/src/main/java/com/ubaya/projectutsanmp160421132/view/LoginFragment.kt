@@ -28,32 +28,6 @@ class LoginFragment : Fragment() {
     val TAG = "volleyTag"
     private lateinit var binding: FragmentLoginBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-//        return inflater.inflate(R.layout.fragment_login, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.btnLogin.setOnClickListener {
-            val username = binding.txtUsername.text.toString()
-            val password = binding.txtPassw.text.toString()
-
-            login(username, password)
-        }
-
-        binding.btnRegister.setOnClickListener {
-            val action = LoginFragmentDirections.actionRegisterFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
-    }
-
     fun login(username: String, password: String) {
         Log.d("login", "loginVolley")
 
@@ -110,5 +84,31 @@ class LoginFragment : Fragment() {
 
         stringRequest.tag = TAG
         queue?.add(stringRequest)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+//        return inflater.inflate(R.layout.fragment_login, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnLogin.setOnClickListener {
+            val username = binding.txtUsername.text.toString()
+            val password = binding.txtPassw.text.toString()
+
+            login(username, password)
+        }
+
+        binding.btnRegister.setOnClickListener {
+            val action = LoginFragmentDirections.actionRegisterFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }

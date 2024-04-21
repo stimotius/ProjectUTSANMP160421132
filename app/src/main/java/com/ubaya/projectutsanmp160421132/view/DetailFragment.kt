@@ -37,38 +37,9 @@ class DetailFragment : Fragment() {
         observeViewModel()
     }
 
-    fun observeViewModel() {
-        viewModel.dataLD.observe(viewLifecycleOwner, Observer {
-            with (binding) {
-                HomeActivity.load_picture(requireView(), it.url_gambar.toString(), imgPhotoDetail)
-                var now_index = 0
-                txtNama.text = it.nama
-                txtUsername.text = "By ${it.pembuat}"
-                val content_per_paragraph = it.isi?.split("\n")
-                Log.d("cekdata", content_per_paragraph.toString())
-                val size_par = content_per_paragraph?.size
-
-                txtContent.text = content_per_paragraph?.get(now_index)
-                checkPageNow(now_index, size_par!!.toInt())
-
-                btnNext.setOnClickListener {
-                    now_index++
-                    txtContent.text = content_per_paragraph[now_index]
-                    checkPageNow(now_index, size_par.toInt())
-                }
-
-                btnPrev.setOnClickListener {
-                    now_index--
-                    txtContent.text = content_per_paragraph[now_index]
-                    checkPageNow(now_index, size_par.toInt())
-                }
-            }
-        })
-    }
-
-    fun checkPageNow(now_index: Int, size_par: Int) {
+    fun checkPageNow(page: Int, size_par: Int) {
         with (binding) {
-            when (now_index) {
+            when (page) {
                 0 -> {
                     btnPrev.isEnabled = false
                     btnNext.isEnabled = true
@@ -83,5 +54,34 @@ class DetailFragment : Fragment() {
                 }
             }
         }
+    }
+
+    fun observeViewModel() {
+        viewModel.dataLD.observe(viewLifecycleOwner, Observer {
+            with (binding) {
+                HomeActivity.load_picture(requireView(), it.url_gambar.toString(), imgPhotoDetail)
+                var page = 0
+                txtNama.text = it.nama
+                txtUsername.text = "By ${it.pembuat}"
+                val content_per_par = it.isi?.split("\n")
+                Log.d("cekdata", content_per_par.toString())
+                val size_par = content_per_par?.size
+
+                txtContent.text = content_per_par?.get(page)
+                checkPageNow(page, size_par!!.toInt())
+
+                btnNext.setOnClickListener {
+                    page++
+                    txtContent.text = content_per_par[page]
+                    checkPageNow(page, size_par.toInt())
+                }
+
+                btnPrev.setOnClickListener {
+                    page--
+                    txtContent.text = content_per_par[page]
+                    checkPageNow(page, size_par.toInt())
+                }
+            }
+        })
     }
 }

@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/itemProfile"
         android:name="com.ubaya.projectutsanmp160421132.view.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/historyFragment"
+        android:id="@+id/itemHistory"
         android:name="com.ubaya.projectutsanmp160421132.view.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" />
@@ -22,13 +22,13 @@
         tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/actionHomeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/itemHome" />
         <argument
             android:name="id"
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/itemHome"
         android:name="com.ubaya.projectutsanmp160421132.view.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home">

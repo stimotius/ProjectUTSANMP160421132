@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ubaya.projectutsanmp160421132"
-        minSdk = 29
+        minSdk = 27
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"

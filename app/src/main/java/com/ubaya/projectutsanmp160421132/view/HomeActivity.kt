@@ -58,9 +58,9 @@ class HomeActivity : AppCompatActivity() {
 
         navController = (supportFragmentManager.findFragmentById(R.id.navHome) as NavHostFragment).navController
         val appBarConfig = AppBarConfiguration(setOf(
-            R.id.homeFragment,
-            R.id.historyFragment,
-            R.id.profileFragment
+            R.id.itemHome,
+            R.id.itemHistory,
+            R.id.itemProfile
         ))
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfig)
